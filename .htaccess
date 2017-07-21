@@ -1,0 +1,7 @@
+
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^angels\.multitecp\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.angels\.multitecp\.com$
+RewriteRule ^/?$ "http\:\/\/multitecp\.com\/angels\/public\/" [R=301,L]
+

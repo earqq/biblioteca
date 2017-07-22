@@ -24,7 +24,7 @@
 
 
 body {
-	background: url(../images/bg.png) repeat;
+	background-color: white;
 	font-family: 'Cabin', sans-serif !important;
 	font-weight:300;
 	text-align: left;
@@ -273,6 +273,12 @@ font-family: 'Cabin', sans-serif;
 	position: relative;
 	bottom: -1px;
 }
+.chart{
+  margin-top: 25px;
+}
+.container-fluid.tables{
+	margin-top: 25px;
+}
 
 .chart-libros{
   display: -webkit-flex;
@@ -286,8 +292,12 @@ font-family: 'Cabin', sans-serif;
 	display: flex;
 	width: 100%;
 }
+.title-content{
+	position: relative;
+}
 .chart-section{
 	width: 50%;
+	position: relative;
 }
 
 .chart-section:last-child{
@@ -309,22 +319,48 @@ font-family: 'Cabin', sans-serif;
 	color: white !important;
 	text-transform: uppercase;
 	font-weight: bold !important;
+	transition: all ease-in-out .3s;
+	padding: 10px;
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	-ms-align-items: center;
+	align-items: center;
+	justify-content: center;
+}
+.btn-accent i{
+	font-size: 20px;
+}
+
+.btn-accent:hover{
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.04),0 1px 5px 0 rgba(0,0,0,0.02),0 3px 1px -2px rgba(0,0,0,0.1);
 }
 
 .title-section{
 	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding-left: 10px;
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	 background-color: white;
+	 box-shadow: 0 2px 2px 0 rgba(0,0,0,0.04),0 1px 5px 0 rgba(0,0,0,0.02),0 3px 1px -2px rgba(0,0,0,0.1);
 }
 
 .title-section h3{
-	font-size: 20px;
+	font-size: 15px;
 	text-transform: uppercase;
-	font-weight: bold;
 }
 
 
 .panel-order{
 	display: flex ;
 	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 .panel-order a{
@@ -337,26 +373,122 @@ font-family: 'Cabin', sans-serif;
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
+	transition: all ease-in-out .3s;
+
 }
+.panel-order a:nth-child(2){
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
+
+}
+
 .panel-order.po-2 a{
 	width: 50% !important;
+	transition: all ease-in-out .3s;
 }
 
 .panel-order a:hover{
 	background-color: white;
-	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
+}
+
+.panel-order a:hover h3{
+	/*animation: rubberBand .7s;*/
+	background-color: #23527C;
+	transform: scale(.9);
+
+	color: white;
 }
 .panel-order i{
 font-size: 80px;
+transition: all ease-in-out .3s;
 }
 
+.panel-order a:hover i{
+	transform: scale(1.1) translateY(-10px);
+}
 .panel-order p{
 margin-top: 10px;
-font-size: 18px;
+font-size: 19px;
 font-weight: bold;
 text-transform: uppercase;
 }
 
+.panel-order h3{
+width: 80px;
+transition: all ease-in-out .3s;
+height: 80px;
+font-size: 25px;
+border-radius: 50%;
+border: 3px solid;
+display: -webkit-flex;
+display: -ms-flex;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 15px;
+}
+
 .side-menu a{
 	font-family: 'Cabin', sans-serif !important;
+}
+
+.fix-menu{
+	position: fixed !important;
+}
+
+.align_col{
+	padding: 10px 20px 0;
+  margin-left: 230px;
+	background-color: white;
+	position: relative;
+}
+
+@media (max-width: 991px) {
+	.align_col{
+	  margin-left: 0px;
+	}
+}
+
+
+
+/* NOTE: animaciones */
+
+@keyframes rubberBand {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    transform: scale3d(.95, 1.05, 1);
+  }
+
+  75% {
+    transform: scale3d(1.05, .95, 1);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }

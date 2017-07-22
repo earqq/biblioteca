@@ -7,9 +7,9 @@
 	@section('content')
 
 	<div class="panel-order">
-		<a href="{{URL::to('autor')}}"><i class="fa fa-street-view"></i><p>Autores</p></a>
-		<a href="{{URL::to('libro')}}"><i class="fa fa-book"></i><p>Libros</p></a>
-		<a href="{{URL::to('user')}}"><i class="fa fa-users"></i><p>Usuarios</p></a>
+		<a href="{{URL::to('autor')}}"><i class="fa fa-street-view"></i><p>Autores</p><h3>29</h3></a>
+		<a href="{{URL::to('libro')}}"><i class="fa fa-book"></i><p>Libros</p><h3>49</h3></a>
+		<a href="{{URL::to('user')}}"><i class="fa fa-users"></i><p>Usuarios</p><h3>19</h3></a>
 	</div>
 
 

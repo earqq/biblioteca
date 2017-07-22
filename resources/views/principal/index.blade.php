@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<?=URL::to('css/sweetalert.css'); ?>">
     <link rel="stylesheet" href="<?=URL::to('font-awesome/css/font-awesome.min.css'); ?>">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Cabin:500" rel="stylesheet">
 
     @yield('estilo')
@@ -16,10 +16,10 @@
 <body class="nav-md">
     <div class="container body">
         <div class="main_container">
-            <div class="col-md-3 left_col">
+            <div class="col-md-3 left_col fix-menu">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="{{URL::to('/')}}" class="site_title"><i class="fa fa-bitbucket"></i> <span>BI</span></a>
+                        <a href="{{URL::to('/')}}" class="site_title"><i class="fa fa-bitbucket"></i> <span>BIBLIOTECA</span></a>
                     </div>
                     <div class="clearfix"></div>
                     <!-- menu profile quick info -->
@@ -43,9 +43,9 @@
                              <li><a href="{{URL::to('prestamo')}}"><i class="fa fa-home"></i> PRESTAMOS <span class="fa fa-chevron-right"></span></a>
 
                             </li>
-                             <li><a href="{{URL::to('gestionar')}}"><i class="fa fa-home"></i> GESTIONAR <span class="fa fa-chevron-right"></span></a>
-                             <li><a href="{{URL::to('reporte')}}"><i class="fa fa-home"></i> REPORTES <span class="fa fa-chevron-right"></span></a>
-                            <li><a href="{{URL::to('sancion')}}"><i class="fa fa-home"></i> SANCIONES <span class="fa fa-chevron-right"></span></a>
+                             <li><a href="{{URL::to('gestionar')}}"><i class="fa fa-archive"></i> GESTIONAR <span class="fa fa-chevron-right"></span></a>
+                             <li><a href="{{URL::to('reporte')}}"><i class="fa fa-file-text"></i> REPORTES <span class="fa fa-chevron-right"></span></a>
+                            <li><a href="{{URL::to('sancion')}}"><i class="fa  fa-exclamation-circle"></i> SANCIONES <span class="fa fa-chevron-right"></span></a>
                             </li>
 
                             @elseif(Auth::user()->tipo==1)
@@ -150,17 +150,17 @@
             <!-- /top navigation -->
 
             <!-- page content -->
-            <div class="right_col" role="main">
+            <div class="align_col">
 
            @yield('content')
 
             </div>
-            <footer>
+            <!-- <footer>
                 <div class="pull-right">
 
                 </div>
                 <div class="clearfix"></div>
-            </footer>
+            </footer> -->
         <!-- /footer content -->
         </div>
     </div>

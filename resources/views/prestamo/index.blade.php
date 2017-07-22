@@ -29,13 +29,13 @@ Prestamos
    <div class="chart-libros-wrapper">
      <div class="bar chart-section panel panel-default padding-box">
        <div class="title-section">
-         <h3>Numero de devoluciones</h3>
+         <h3><i class="fa fa-bar-chart"></i>&nbsp;Numero de devoluciones</h3>
        </div>
        <canvas id="myChart" class="chart"></canvas>
      </div>
      <div class="doughnut chart-section panel panel-default padding-box">
        <div class="title-section">
-         <h3>Devoluciones {{$dia}}</h3>
+         <h3><i class="fa fa-bar-chart"></i>&nbsp;Devoluciones {{$dia}}</h3>
        </div>
        <canvas id="myChart2" class="chart"></canvas>
      </div>
@@ -58,7 +58,7 @@ Prestamos
 // graficos
 
 function chart(tipo_grafico){
-          
+
         var route="./prestamo/grafico/"+tipo_grafico;
             var token=$("#token").val();
              $.ajax({
@@ -70,7 +70,7 @@ function chart(tipo_grafico){
                       if(result.tipo==1)
                       {
                         var ctx = document.getElementById("myChart").getContext('2d');
-                        var myChart = new Chart(ctx, 
+                        var myChart = new Chart(ctx,
                         {
                         type: 'bar',
                         data: {
@@ -112,7 +112,7 @@ function chart(tipo_grafico){
                     }
                     else
                     {
-                      
+
                       var ctx2 = document.getElementById("myChart2").getContext('2d');
                       var myChart2 = new Chart(ctx2, {
                             type: 'pie',
@@ -137,15 +137,15 @@ function chart(tipo_grafico){
                             }
                         });
 
-                    } 
+                    }
 
                     }
 
                 });
 
 
-  
-  
+
+
 
 }
 
@@ -360,8 +360,8 @@ tableResposive("#example", 980);
 
             success: function(producto) {
 
-              
-              
+
+
             $('#example').DataTable().ajax.reload();
             alert(producto);
             }

@@ -6,56 +6,44 @@
                 <h4 class="modal-title" id="gridModalLabel">Libro</h4>
             </div>
             {!! Form::open(['route'=>'prestamo.store', 'method'=>'POST','id'=>'form-prestamo']) !!}
-                <div class="modal-body">          
+                <div class="modal-body">
                 <input type="hidden" name='tipo_avance' value='3' id='tipo_avance'></input>
                     <div class="container-fluid bd-example-row">
-                        <div class="row">                   
-                            <div class="form-group col-xs-11 col-margins">
-                                <div class="inner-addon right-addon">                    
+                        <div class="row">
+                                <div class="inner-addon right-addon">
                                     <label for="">Nombre</label>
 
-                                    {!!Form::text('usuario', null,array('class'=>'form-control','id'=>'musuario', 'placeholder'=>'Nombre(**)','readonly'=>'readonly'))!!}                                    
+                                    {!!Form::text('usuario', null,array('class'=>'form-control','id'=>'musuario', 'placeholder'=>'Nombre(**)','readonly'=>'readonly'))!!}
                                 </div>
-                            </div> 
-                            <div class="form-group col-xs-11 col-margins">
-                                <div class="inner-addon right-addon">                    
+                                <div class="inner-addon right-addon">
                                     <label for="">Libro</label>
-
-                                    {!!Form::text('libro', null,array('class'=>'form-control','id'=>'mlibro', 'readonly'=>'readonly'))!!}                                    
+                                    {!!Form::text('libro', null,array('class'=>'form-control','id'=>'mlibro', 'readonly'=>'readonly'))!!}
                                 </div>
-                            </div>  
-                                                                        
-                            
-                            <div class="form-group col-xs-11 col-margins">
-                                <div class="inner-addon right-addon">                    
+                                <br>
+                                <div class="inner-addon right-addon">
                                     <label for="">Fecha prestamo</label>
-                                    <input type='text' class="form-control" readonly="readonly"  id='mfecha_prestamo' name='fecha_prestamo' ></input>                               
+                                    <input type='text' class="form-control" readonly="readonly"  id='mfecha_prestamo' name='fecha_prestamo' ></input>
                                 </div>
-                            </div>    
-                              <div class="form-group col-xs-11 col-margins">
-                                <div class="inner-addon right-addon">                    
+                                <br>
+                                <div class="inner-addon right-addon">
                                     <label for="">Fecha devolucion</label>
-                                    <input type='text' class="form-control" readonly="readonly"  id='mfecha_devolucion' name='fecha_devolucion' ></input>                               
+                                    <input type='text' class="form-control" readonly="readonly"  id='mfecha_devolucion' name='fecha_devolucion' ></input>
                                 </div>
-                            </div>  
-                            <div class="form-group col-xs-11 col-margins">
-                                <div class="inner-addon right-addon">                    
+                                <br>
+                                <div class="inner-addon right-addon">
                                     <label for="">Estado libro</label>
-                                    <input type='text' class="form-control" readonly="readonly"  id='mestado_libro' name='estado_libro' ></input>                               
-                                </div> 
-                             </div>
-                               <div class="form-group col-xs-11 col-margins">
-                                <div class="inner-addon right-addon">                    
+                                    <input type='text' class="form-control" readonly="readonly"  id='mestado_libro' name='estado_libro' ></input>
+                                </div>
+                                <br>
+                                <div class="inner-addon right-addon">
                                     <label for="">Estado devolucion</label>
-                                    <input type='text' class="form-control" readonly="readonly" id='mestado_devolucion' name='estado_devolucion' ></input>                               
-                                </div> 
-                             </div>
-                                <div class="form-group col-xs-11 col-margins">
-                                <div class="inner-addon right-addon">                    
+                                    <input type='text' class="form-control" readonly="readonly" id='mestado_devolucion' name='estado_devolucion' ></input>
+                                </div>
+                                <br>
+                                <div class="inner-addon right-addon">
                                     <label for="">Descripcion </label>
-                                    <input type='text' class="form-control" id='mdescripcion' name='descripcion' ></input>                               
-                                </div> 
-                             </div>
+                                    <input type='text' class="form-control" id='mdescripcion' name='descripcion' ></input>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -68,5 +56,4 @@
             {!!Form::close()!!}
         </div>
     </div>
-</div> 
- 
+</div>

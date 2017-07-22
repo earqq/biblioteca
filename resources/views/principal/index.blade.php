@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="<?=URL::to('css/custom.min.css'); ?>">
     <link rel="stylesheet" href="<?=URL::to('css/sweetalert.css'); ?>">
     <link rel="stylesheet" href="<?=URL::to('font-awesome/css/font-awesome.min.css'); ?>">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    
+    <link href="https://fonts.googleapis.com/css?family=Cabin:500" rel="stylesheet">
+
     @yield('estilo')
 </head>
 <body class="nav-md">
@@ -27,9 +31,9 @@
                             <span>Bienvenido,</span>
                             <h2>{{Auth::user()->name}}</h2>
                         </div>
-                    </div> 
+                    </div>
                       <br />
-                    <!-- /menu profile quick info -->            
+                    <!-- /menu profile quick info -->
                     <!-- sidebar menu -->
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                       <div class="menu_section">
@@ -37,20 +41,20 @@
                         <ul class="nav side-menu">
                             @if(Auth::user()->tipo>1)
                              <li><a href="{{URL::to('prestamo')}}"><i class="fa fa-home"></i> PRESTAMOS <span class="fa fa-chevron-right"></span></a>
-                                
+
                             </li>
-                             <li><a href="{{URL::to('gestionar')}}"><i class="fa fa-home"></i> GESTIONAR <span class="fa fa-chevron-right"></span></a>                           
+                             <li><a href="{{URL::to('gestionar')}}"><i class="fa fa-home"></i> GESTIONAR <span class="fa fa-chevron-right"></span></a>
                              <li><a href="{{URL::to('reporte')}}"><i class="fa fa-home"></i> REPORTES <span class="fa fa-chevron-right"></span></a>
-                            <li><a href="{{URL::to('sancion')}}"><i class="fa fa-home"></i> SANCIONES <span class="fa fa-chevron-right"></span></a>                               
+                            <li><a href="{{URL::to('sancion')}}"><i class="fa fa-home"></i> SANCIONES <span class="fa fa-chevron-right"></span></a>
                             </li>
-                            
+
                             @elseif(Auth::user()->tipo==1)
                              <li><a href="{{URL::to('/')}}"><i class="fa fa-home"></i> LIBROS<span class="fa fa-chevron-right"></span></a>
                                 </li>
                              <li><a href="{{URL::to('prestamo_usuario')}}"><i class="fa fa-home"></i> PRESTAMOS<span class="fa fa-chevron-right"></span></a>
                                 </li>
                             @endif
-                         
+
                         </ul>
                       </div>
                     </div>
@@ -108,7 +112,7 @@
                                     <li>
                                         <a>
                                             <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                                            <span>                                        
+                                            <span>
                                                 <span>John Smith</span>
                                                 <span class="time">3 mins ago</span>
                                             </span>
@@ -128,7 +132,7 @@
                                               Film festivals used to be do-or-die moments for movie makers. They were where...
                                             </span>
                                         </a>
-                                    </li>                        
+                                    </li>
                                     <li>
                                         <div class="text-center">
                                             <a>
@@ -147,24 +151,23 @@
 
             <!-- page content -->
             <div class="right_col" role="main">
-            
-           @yield('content') 
-            
+
+           @yield('content')
+
             </div>
             <footer>
                 <div class="pull-right">
-        
+
                 </div>
                 <div class="clearfix"></div>
             </footer>
         <!-- /footer content -->
         </div>
     </div>
-</body>  
+</body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.js"></script>
     <script src="<?=URL::to('js/custom.min.js'); ?>"></script>
-    
+
     <script src="<?=URL::to('bootstrap/js/bootstrap.min.js'); ?>"></script>
     <script src="<?=URL::to('js/sweetalert-dev.js'); ?>"></script>
     @yield('script')
-    

@@ -2,21 +2,19 @@
 	@section('titulo')
 		Reporte Prestamos
 	@endsection()
+	<link rel="stylesheet" href="{{asset('css/style.css')}}">
+
 	@section('content')
-			<div class="panel panel-default">		
-	  		<div class="panel-body">
-	  			<a href="{{URL::to('reporte/prestamo/1')}}">Prestamos en curso</a>
-			</div>
-		</div>			
-	<div class="panel panel-default">		
-	  		<div class="panel-body">
-	  			<a href="{{url('reporte/prestamo/0')}}">Prestamos devueltos</a>
-			</div>
-		</div>	
-	
-	
+
+	<div class="panel-order po-2">
+		<a href="{{URL::to('reporte/prestamo/1')}}"><i class="fa fa-calendar-o"></i><p>Prestamos en curso</p></a>
+		<a href="{{url('reporte/prestamo/0')}}"><i class="fa fa-calendar-times-o"></i><p>Prestamos devueltos</p></a>
+	</div>
+
+
+
 	@endsection()
-	@section('script')		
-	
-		
+	@section('script')
+
+
 	@endsection()

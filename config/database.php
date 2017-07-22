@@ -56,7 +56,9 @@ return [
             'driver' => 'mysql',
             'host' => env('localhost', 'localhost'),
             'port' => env('DB_PORT', '3306'),
+
            'database'  => 'biblioteca3',
+
             'username'  => 'root',
             'password'  => '',
             'charset' => 'utf8',

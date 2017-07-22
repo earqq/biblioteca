@@ -5,9 +5,9 @@
     @section('estilo')
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-        
+
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        
+
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:600" rel="stylesheet">
         <style>
               .active{
@@ -106,7 +106,7 @@
 @endsection
 
 @section('script')
-    
+
      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
     <script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js" ></script>
@@ -208,7 +208,7 @@ function graficar(datos){
 
           datatableprestamo();
           datatabledevolucion();
-          
+
 }
 
 
@@ -216,8 +216,8 @@ function graficar(datos){
 function datatableprestamo()
         {
         var tipo_dia=$('#tipo_dia').val();
-        
-       
+
+
             $('#example').dataTable().fnDestroy();
 
             $('#example').DataTable
@@ -225,7 +225,7 @@ function datatableprestamo()
                 "processing": true,
                 "serverSide": true,
                 'bFilter':true,
-                
+
                 "oLanguage":
                 {
                         "oPaginate":
@@ -248,13 +248,13 @@ function datatableprestamo()
 
                 ]
             });
-       
+
         }
 
 function datatabledevolucion()
 {
     var tipo_dia=$('#tipo_dia').val();
-        
+
     $('#example1').dataTable().fnDestroy();
     $('#example1').DataTable
     ({  "order": [[ 0, 'desc' ]],
@@ -283,7 +283,7 @@ function datatabledevolucion()
 
                 ]
             });
-       
+
 }
 
 

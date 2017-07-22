@@ -10,7 +10,7 @@
 	<div class="panel-order">
 		<a href="{{URL::to('recurso')}}"><i class="fa fa-street-view"></i><p>Gestion Bibliotecaria</p><h3>29</h3></a>
 		<a href="{{URL::to('user_preindex')}}"><i class="fa fa-book"></i><p>Adm. Usuario</p><h3>49</h3></a>
-		<a href="{{URL::to('servicios')}}"><i class="xa fa-users"></i><p>Servicios</p><h3>19</h3></a>
+		<a href="{{URL::to('servicios')}}"><i class="fa fa-cogs"></i><p>Servicios</p><h3>19</h3></a>
 	</div>
 
 
@@ -25,7 +25,7 @@
 	  			<a href="{{URL::to('servicios')}}">Servicios</a>
 			</div>
 		</div>
-		
+
 	 -->
 	@endsection()
 	@section('script')

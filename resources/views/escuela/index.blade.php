@@ -5,9 +5,10 @@
 	<link rel="stylesheet" href="{{asset('css/style.css')}}">
 
 	@section('content')
-
+	<div class="panel panel-default padding-box">
+		<button onclick="abrir();" class="btn btn-accent"><i class="fa fa-plus-circle">&nbsp;</i>Nueva Escuela</button>
+	</div>
   <div class="sanciones_form panel panel-default padding-box ">
-    <button onclick="abrir();" class="btn btn-accent">Nueva Escuela</button>
 		<div class="container-fluid ">
 				<table   id="example" class="table table table-hover table-result  width-all">
 					<thead>
@@ -53,10 +54,10 @@
 
 function chart(){
 
-	
+
 	var ctx2 = document.getElementById("myChart2").getContext('2d');
 	var ctx = document.getElementById("myChart").getContext('2d');
-                        var myChart = new Chart(ctx, 
+                        var myChart = new Chart(ctx,
                         {
                         type: 'bar',
                         data: {
@@ -161,10 +162,10 @@ function chart(){
 	        success: function(result) {
 	        $("#mnombre").val(result.nombre);
 			$("#mdescripcion").val(result.descripcion);
-		
+
 
 			$("#mid_escuela").val(result.id);
-		
+
 			$('#modal').modal('show');
 	        $('#crear').val('1');
 	        }
@@ -292,7 +293,7 @@ function chart(){
 
 	    	{data: 'nombre'},
 	    	{data: 'facultad'},
-	    
+
 
 
 	    	{data: 'action'},

@@ -3,21 +3,13 @@
 		Gestionar
 	@endsection()
 	@section('content')
-	
-		<div class="panel panel-default">		
-	  		<div class="panel-body">
-	  			<a href="{{URL::to('prestamo')}}">Prestamos</a>
-			</div>
+
+		<div class="panel-order po-2">
+			<a href="{{URL::to('prestamo')}}"><i class="fa fa-calendar-o"></i><p>Prestamos</p></a>
+			<a href="{{URL::to('sancion')}}"><i class="fa fa-exclamation-circle"></i><p>Sanciones</p></a>
 		</div>
-		<div class="panel panel-default">		
-	  		<div class="panel-body">
-	  			<a href="{{URL::to('sancion')}}">Sanciones</a>
-			</div>
-		</div>
-		
-		
-	 
+
 	@endsection()
-	@section('script')		
-	
+	@section('script')
+
 	@endsection()

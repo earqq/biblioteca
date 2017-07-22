@@ -36,7 +36,67 @@ class LibroController extends Controller
                
 
     }
+    public function grafico($tipo)
+    {   //Barras
+        if($tipo==1)
+        {
+           
+            $libros=libro::all();
+            $fecha= new Datetime;
+            $mes=$fecha->format('m');
+            $mes2=intval($mes)+1;
+            $año=$fecha->format('Y');
+            $fecha1=$año.'-'.$mes.'-01';
+            $fecha2=$año.'-'.$mes2.'-01';
+            $prestamos=prestamo::where('fecha_prestamo','>=',$fecha1)->where('fecha_prestamo','<',$fecha2)->get();
 
+            $datos=array();
+            $datos1=new Arrayobject();
+            $datos2=new Arrayobject();
+            $datos3=new Arrayobject();
+            foreach ($libros as $key => $libro) {
+                 $dato=0;
+                foreach ($prestamos as $key => $prestamo)
+                {      
+                        if($prestamo->id_libro==$libro->id)
+                        {   
+                            $dato++;
+                            
+                        }
+                        
+                }
+                $datos[$dato]=$libro->nombre;
+            }   
+            //ordenando
+            foreach ($datos as $key => $value) {
+                foreach ($$datos as $key1 => $value1) {
+                    # code...
+                }
+            }
+            $datos1=array();
+            $datos2=array();
+            foreach ($datos as $key => $value) {
+               array_push($datos1,$key);
+               array_push($datos2,$value);
+            }
+            arsort($datos1);
+            arsort($datos2);
+            $datos1=array_slice($datos1, 0, 5);
+            $datos2=array_slice($datos2, 0, 5);
+            $datos3['datos']=$datos1;
+            $datos3['valor']=$datos2;
+            return $datos3;   
+        }//Pastel
+        else
+        {
+            $prestamo=new Arrayobject();
+            $fecha= new Datetime;
+            $prestamo['devolver']=prestamo::where('fecha_devolucion',$fecha->format('Y-m-d'))->where('estado',1)->count('id');
+            $prestamo['devueltos']=prestamo::where('fecha_devolucion',$fecha->format('Y-m-d'))->where('estado',0)->count('id');
+            $prestamo['tipo']=2;
+            return $prestamo;
+        }
+    }
     /**
      * Store a newly created resource in storage.
      *

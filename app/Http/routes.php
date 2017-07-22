@@ -63,6 +63,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::resource('categoria','CategoriaController');
 	Route::get('reportes/categoria','CategoriaController@reporte');
 	Route::get('api/categoria','CategoriaController@data');
+	Route::get('grafico/categoria','CategoriaController@grafico');
 	Route::get('get/categoria','CategoriaController@get');
 	//Escuela
 	Route::resource('escuela','EscuelaController');

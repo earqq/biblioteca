@@ -57,10 +57,10 @@ return [
             'host' => env('localhost', 'localhost'),
             'port' => env('DB_PORT', '3306'),
 
-           'database'  => 'biblioteca',
+           'database'  => 'biblioteca3',
 
             'username'  => 'root',
-            'password'  => 'root',
+            'password'  => '',
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',

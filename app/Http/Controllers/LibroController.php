@@ -10,6 +10,8 @@ use Datetime;
 use DB;
 use App\libro;
 use App\autor;
+use App\prestamo;
+use Arrayobject;
 use Excel;
 use Illuminate\Support\Collection as Collection;
 
@@ -54,6 +56,7 @@ class LibroController extends Controller
             $datos1=new Arrayobject();
             $datos2=new Arrayobject();
             $datos3=new Arrayobject();
+            $contador=0;
             foreach ($libros as $key => $libro) {
                  $dato=0;
                 foreach ($prestamos as $key => $prestamo)
@@ -65,24 +68,43 @@ class LibroController extends Controller
                         }
                         
                 }
-                $datos[$dato]=$libro->nombre;
+                $datos1[$contador]=$libro->nombre;
+                $datos2[$contador]=$dato;
+                $contador++;
             }   
+            
             //ordenando
-            foreach ($datos as $key => $value) {
-                foreach ($$datos as $key1 => $value1) {
-                    # code...
-                }
+
+            for ($i=0; $i < count($datos2)-1; $i++) 
+            { 
+              for ($j=0; $j <count($datos2)-1; $j++) { 
+                      if($datos2[$j]<$datos2[$j+1])   
+                      { 
+                        $aux=$datos2[$j+1];
+                        $aux2=$datos1[$j+1];
+                        $datos2[$j+1]=$datos2[$j];
+                        $datos1[$j+1]=$datos1[$j];
+
+                        $datos2[$j]=$aux;
+                        $datos1[$j]=$aux2;
+
+                      }
+                   }     
             }
-            $datos1=array();
-            $datos2=array();
-            foreach ($datos as $key => $value) {
-               array_push($datos1,$key);
-               array_push($datos2,$value);
+
+            $datos4=array();
+            $datos5=array();
+            foreach ($datos1 as $key => $value) {
+               array_push($datos4,$value);
+               
             }
-            arsort($datos1);
-            arsort($datos2);
-            $datos1=array_slice($datos1, 0, 5);
-            $datos2=array_slice($datos2, 0, 5);
+            foreach ($datos2 as $key => $value) {
+               array_push($datos5,$value);
+               
+            }
+
+            $datos1=array_slice($datos4, 0, 7);
+            $datos2=array_slice($datos5, 0, 7);
             $datos3['datos']=$datos1;
             $datos3['valor']=$datos2;
             return $datos3;   
@@ -129,7 +151,7 @@ class LibroController extends Controller
     }
    public function store(Request $request)
     {   
-        if($request->crear==0)
+        if($request->crear_libro==0)
            $libro=new libro;
        else $libro=libro::find($request->get('id_libro'));
             $libro->nombre=$request->nombre;

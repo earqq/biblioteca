@@ -1,19 +1,20 @@
 @extends('principal.index')
 	@section('titulo')
-		Libros
+		Gestion bibliotecaria
 	@endsection()
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+
 
 @section('content')
 
 <div class="tab-button ">
 	<div class="tab active" id="perfil-button">
-		<i class="fa fa-street-view"></i>&nbsp;&nbsp;<p>autor</p>
+		<i class="fa fa-street-view"></i>&nbsp;&nbsp;<p>autores</p>
 	</div>
 
 	<div class="tab" id="asistencia-button">
-		<i class="fa fa-lightbulb-o"></i>&nbsp;&nbsp;<p>areas</p>
+		<i class="fa fa-lightbulb-o"></i>&nbsp;&nbsp;<p>categorias</p>
 	</div>
 
 	<div class="tab" id="asistencia-users-button">
@@ -60,14 +61,18 @@
           <!--Fin autor-->
           <div id='asistencia' class="profile-tab">
 
-			  <div class="sanciones_form panel panel-default padding-box ">
-			    <button onclick="abrir_area();" class="btn btn-accent"><i class="fa fa-plus-circle">&nbsp;</i>Nueva Area</button>
-					<div class="container-fluid ">
-							<table   id="example_area" class="table table table-hover table-result  width-all">
+			
+				<div class="panel panel-default padding-box">
+			<button onclick="abrir_area();" class="btn btn-accent"><i class="fa fa-plus-circle">&nbsp;</i>Categoria nuevo</button>
+					</div>
+					<div class="sanciones_form panel panel-default  padding-box ">
+					<div class="container-fluid table-container ">
+							<table   id="example_area" class="table table-hover">
 								<thead>
 									<tr>
 										<th>Nombre</th>
 										<th>Descripcion</th>
+										
 										<th>Acciones</th>
 									</tr>
 								</thead>
@@ -75,10 +80,9 @@
 						<br/>
 					</div>
 				</div>
-
-				<div class="chart-libros">
-			 	 <div class="chart-libros-wrapper">
-			 		 <div class="bar  panel panel-default padding-box">
+				<div >
+			 	 <div>
+			 		 <div class="bar  panel panel-default padding-box title-content">
 						 <div class="title-section">
 							 <h3>Categorias mas prestadas por mes</h3>
 						 </div>
@@ -118,20 +122,15 @@
 				</div>
 				<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 
-			 <div class="chart-libros title-content">
-				 <div class="chart-libros-wrapper">
-					 <div class="bar chart-section panel panel-default padding-box">
+			 <div >
+				 <div>
+					 <div class="bar  panel panel-default padding-box title-content">
 						 <div class="title-section">
-							 <h3><i class="fa fa-bar-chart"></i>&nbsp;Prestamos por mes</h3>
+							 <h3><i class="fa fa-bar-chart"></i>&nbsp;Libros mas prestados por mes</h3>
 						 </div>
 						 <canvas id="myChart_libro" class="chart"></canvas>
 					 </div>
-					 <div class="doughnut chart-section panel panel-default padding-box">
-						 <div class="title-section">
-							 <h3><i class="fa fa-bar-chart"></i>&nbsp;Prestamos por area</h3>
-						 </div>
-						 <canvas id="myChart2_libro" class="chart"></canvas>
-					 </div>
+					
 				 </div>
 			 </div>
         </div>
@@ -151,6 +150,7 @@
 
 @section('script')
 <script type="text/javascript" src="<?=URL::to('js/autocomplete.js');?>"></script>
+ <script src="{{asset('js/Chart.js/dist/chart.js')}}"></script>
 <script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js" ></script>
 <script type="text/javascript">
 
@@ -160,7 +160,7 @@ function showPerfil(){
     $("#asistencia-button").removeClass("active");
     $("#asistencia-users-button").removeClass("active");
     $("#perfil").addClass("active");
-    $("#asistencia_adm").removeClass("active");
+    $("#asistencia-adm").removeClass("active");
     $("#asistencia").removeClass("active");
   })
   $("#asistencia-button").click(function(){
@@ -187,76 +187,71 @@ function showPerfil(){
 
 	function chart_libro(){
 
-		var ctx = document.getElementById("myChart_libro").getContext('2d');
-		var ctx2 = document.getElementById("myChart2_libro").getContext('2d');
-		var myChart = new Chart(ctx, {
-				type: 'bar',
-				data: {
-						labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-						datasets: [{
-								label: '# of Votes',
-								data: [12, 19, 3, 5, 2, 3],
-								backgroundColor: [
-										'rgba(255, 99, 132, 0.2)',
-										'rgba(54, 162, 235, 0.2)',
-										'rgba(255, 206, 86, 0.2)',
-										'rgba(75, 192, 192, 0.2)',
-										'rgba(153, 102, 255, 0.2)',
-										'rgba(255, 159, 64, 0.2)'
-								],
-								borderColor: [
-										'rgba(255,99,132,1)',
-										'rgba(54, 162, 235, 1)',
-										'rgba(255, 206, 86, 1)',
-										'rgba(75, 192, 192, 1)',
-										'rgba(153, 102, 255, 1)',
-										'rgba(255, 159, 64, 1)'
-								],
-								borderWidth: 1
-						}]
-				},
-				options: {
-						scales: {
-								yAxes: [{
-										ticks: {
-												beginAtZero:true
-										}
-								}]
-						}
-				}
-		});
+		
+		
+		 var route="./grafico/libro/1";
+            var token=$("#token").val();
+             $.ajax({
+            headers:{'X-CSRF-TOKEN':token},
+            url:route,
+            type:'GET',
+                    success: function(result)
+                    {
+
+                        var ctx = document.getElementById("myChart_libro").getContext('2d');
+                        var myChart = new Chart(ctx,
+                        {
+	                        type: 'bar',
+	                        data:
+	                        {
+	                            labels: result.datos,
+	                            datasets:
+	                            [{
+	                                label: '# de libros prestados',
+	                                data: result.valor,
+	                                backgroundColor:
+	                                [
+	                                    'rgba(255, 99, 132, 0.2)',
+	                                    'rgba(54, 162, 235, 0.2)',
+	                                    'rgba(255, 206, 86, 0.2)',
+	                                    'rgba(75, 192, 192, 0.2)',
+	                                    'rgba(153, 102, 255, 0.2)',
+	                                    'rgba(255, 159, 64, 0.2)',
+	                                    'rgba(255, 159, 64, 0.2)'
+	                                ],
+	                                borderColor:
+	                                [
+	                                    'rgba(255,99,132,1)',
+	                                    'rgba(54, 162, 235, 1)',
+	                                    'rgba(255, 206, 86, 1)',
+	                                    'rgba(75, 192, 192, 1)',
+	                                    'rgba(153, 102, 255, 1)',
+	                                    'rgba(255, 159, 64, 1)',
+	                                    'rgba(255, 159, 64, 1)'
+	                                ],
+	                                borderWidth: 1
+	                            }]
+	                        },
+	                        options:
+	                        {
+	                            scales:
+	                            {
+	                                yAxes:
+	                                [{
+	                                    ticks:
+	                                     {
+	                                        beginAtZero:true
+	                                    }
+	                                }]
+	                            }
+	                        }
+                    	});
+                	}
+                });
 
 
-		var myChart2 = new Chart(ctx2, {
-				type: 'doughnut',
-				data: {
-						labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-						datasets: [{
-								label: '# of Votes',
-								data: [12, 19, 3, 5, 2, 3],
-								backgroundColor: [
-										'rgba(255, 99, 132, 0.2)',
-										'rgba(54, 162, 235, 0.2)',
-										'rgba(255, 206, 86, 0.2)',
-										'rgba(75, 192, 192, 0.2)',
-										'rgba(153, 102, 255, 0.2)',
-										'rgba(255, 159, 64, 0.2)'
-								],
-								borderColor: [
-										'rgba(255,99,132,1)',
-										'rgba(54, 162, 235, 1)',
-										'rgba(255, 206, 86, 1)',
-										'rgba(75, 192, 192, 1)',
-										'rgba(153, 102, 255, 1)',
-										'rgba(255, 159, 64, 1)'
-								],
-								borderWidth: 1
-						}]
-				},
-				options: {
-						rotate: -0.5 * Math.PI
-				}
-		});
+
+
 	}
 
 
@@ -404,7 +399,7 @@ function showPerfil(){
 
 	$(document).ready(function() {
 		showPerfil();
-		chart();
+		
   	/*Para el registro de nuevo producto o edicion*/
   	$('#example_libro').DataTable( {
 	    "processing": true,
@@ -483,7 +478,7 @@ tableResposive("#example_libro", 980);
 //Autor
 // graficos
 
-	function chart(){
+	function chart_autor(){
 		   var route="./grafico/autor";
             var token=$("#token").val();
              $.ajax({
@@ -492,7 +487,7 @@ tableResposive("#example_libro", 980);
             type:'GET',
                     success: function(result)
                     {
-                      	console.log(result.datos);
+
                         var ctx = document.getElementById("myChart_autor").getContext('2d');
                         var myChart = new Chart(ctx,
                         {
@@ -690,7 +685,7 @@ tableResposive("#example_libro", 980);
 
 	$(document).ready(function() {
 
-		chart();
+		
 
   	/*Para el registro de nuevo producto o edicion*/
   	$('#example_autor').DataTable( {
@@ -776,7 +771,7 @@ function chart_area(){
                     success: function(result) 
                     {
                 
-                        var ctx = document.getElementById("myChart_autor").getContext('2d');
+                        var ctx = document.getElementById("myChart_area").getContext('2d');
                         var myChart = new Chart(ctx, 
                         {
 	                        type: 'bar',
@@ -971,7 +966,9 @@ function chart_area(){
 
 	$(document).ready(function() {
 
-		chart();
+		chart_libro();
+		chart_area();
+		chart_autor();
 
   	/*Para el registro de nuevo producto o edicion*/
   	$('#example_area').DataTable( {

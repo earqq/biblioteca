@@ -89,7 +89,7 @@ class AutorController extends Controller
   
    public function store(Request $request)
     {   
-        if($request->crear==0)
+        if($request->crear_autor==0)
            $libro=new autor;
        else $libro=autor::find($request->get('id_autor'));
             $libro->nombre=$request->nombre;

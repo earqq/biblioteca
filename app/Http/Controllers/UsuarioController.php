@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 // use  App\producto;
 use  App\User;
+use  App\prestamo;
 use Datetime;
+use DateInterval;
+use Arrayobject;
 use Excel;
 use Illuminate\Support\Collection as Collection;    
 class UsuarioController extends Controller
@@ -36,6 +39,134 @@ class UsuarioController extends Controller
     {
         return view('reporte.usuario');
 
+    }
+    public function grafico($tipo)
+    {   //Barras
+        if($tipo==1)
+        {
+             $fecha = new Datetime;
+                $fecha1= strtotime($fecha->format('Y-m-d'));
+                switch (date('w',$fecha1))
+                {
+                    case '0':{
+                                $fecha->sub(new DateInterval('P6D'));
+                                $fecha_inicio= $fecha;
+                                $fecha_fin=new Datetime;                                
+                            }
+                        break;
+                    case '1':{
+                                $fecha_inicio=$fecha;
+                                $fecha_fin=new Datetime;
+
+                             }
+                        break;
+                    case '2':{
+                                $fecha->sub(new DateInterval('P1D'));
+                                $fecha_inicio= $fecha;
+                                $fecha_fin=new Datetime;}
+                        break;
+                    case '3':{
+                                $fecha->sub(new DateInterval('P2D'));
+                                $fecha_inicio= $fecha;
+                                $fecha_fin=new Datetime;}
+                        break;
+                    case '4':{
+                                $fecha->sub(new DateInterval('P3D'));
+                                $fecha_inicio= $fecha;
+                                $fecha_fin=new Datetime;}
+                        break;
+                    case '5':{
+                                $fecha->sub(new DateInterval('P4D'));
+                                $fecha_inicio= $fecha;
+                                $fecha_fin=new Datetime;
+                            }
+                        break;
+                    case '6':{
+                                $fecha->sub(new DateInterval('P5D'));
+                                $fecha_inicio= $fecha;
+                                $fecha_fin=new Datetime;}
+                        break;
+                } 
+
+                             
+                $ventas=new Arrayobject();
+              
+                /*Lunes*/
+              
+                
+                    $ventas['Lunes']=prestamo::where('fecha_devolucion','=',$fecha_inicio->format('Y-m-d'))->count('id');  
+                
+                    
+
+
+
+
+                    $ventas['Martes']=prestamo::where('fecha_devolucion','=',$fecha_inicio->add(new DateInterval('P1D'))->format('Y-m-d'))->count('id'); 
+
+                
+                     
+             
+                
+               
+               
+                    
+                    $ventas['Miercoles']=prestamo::where('fecha_devolucion','=',$fecha_inicio->add(new DateInterval('P1D'))->format('Y-m-d'))->count('id'); 
+
+              
+                     
+                
+               
+                /*Jueves*/
+               
+                    
+                    $ventas['Jueves']=prestamo::where('fecha_devolucion','=',$fecha_inicio->add(new DateInterval('P1D'))->format('Y-m-d'))->count('id'); 
+
+                
+                     
+                
+                 /*Viernes*/
+              
+               
+                    
+                    $ventas['Viernes']=prestamo::where('fecha_devolucion','=',$fecha_inicio->add(new DateInterval('P1D'))->format('Y-m-d'))->count('id'); 
+
+                     
+                 
+                 /*Sabado*/
+            
+        
+                    $ventas['Sabado']=prestamo::where('fecha_devolucion','=',$fecha_inicio->add(new DateInterval('P1D'))->format('Y-m-d'))->count('id'); 
+
+               
+                     
+                    
+                 /*Domingo*/
+                 
+
+                    
+                    $ventas['Domingo']=prestamo::where('fecha_devolucion','=',$fecha_inicio->add(new DateInterval('P1D'))->format('Y-m-d'))->count('id'); 
+                   
+                
+                     
+                
+
+                return $ventas;   
+        }//Pastel
+        else
+        {
+            $prestamo=new Arrayobject();
+             $fecha= new Datetime;
+            $mes=$fecha->format('m');
+            $mes2=intval($mes)+1;
+            $año=$fecha->format('Y');
+            $fecha1=$año.'-'.$mes.'-01';
+            $fecha2=$año.'-'.$mes2.'-01';
+
+            $prestamos=prestamo::where('fecha_prestamo','>=',$fecha1)->where('fecha_prestamo','<',$fecha2)->get();
+            $prestamo['devolvio']=prestamo::where('fecha_devolucion','>=',$fecha1)->where('fecha_devolucion','<',$fecha2)->where('estado',0)->count('id');
+            $prestamo['no_devolvio']=prestamo::where('fecha_devolucion','>',$fecha->format('Y-m-d'))->where('estado',1)->count('id');
+            return $prestamo;
+        }
     }
     public function reporte($tipo)
     {

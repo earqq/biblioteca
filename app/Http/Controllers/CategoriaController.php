@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use  App\libro;
 use  App\categoria;
-
+use  App\prestamo;
+use Datetime;
+use Arrayobject;
 class CategoriaController extends Controller
 {
     /**
@@ -87,8 +89,8 @@ class CategoriaController extends Controller
      */
    public function store(Request $request)
     {   
-
-       if($request->crear==0)
+   
+       if($request->crear_area==0)
            $libro=new categoria;
        else $libro=categoria::find($request->get('id_categoria'));
             $libro->nombre=$request->nombre;

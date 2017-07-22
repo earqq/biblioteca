@@ -63,7 +63,7 @@
                     </div>
                 </div>
                  <input type="hidden" name="id_libro" id='mid_libro'>
-                <input type="hidden" id='crear_libro' name="crear" value='0'>
+                <input type="hidden" id='crear_libro' name="crear_libro" value='0'>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     <button type="submit" id="btn-addlibro"  class="btn btn-primary" data-dismiss="modal">Guardar</button>

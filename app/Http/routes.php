@@ -59,6 +59,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('api/libro','LibroController@data');
 	Route::get('api/libro_prestar','LibroController@data_prestar');
 	Route::get('get/libro','LibroController@get');
+	Route::get('grafico/libro/{tipo}','LibroController@grafico');
 	//categoria
 	Route::resource('categoria','CategoriaController');
 	Route::get('reportes/categoria','CategoriaController@reporte');
@@ -70,6 +71,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('reportes/escuela','EscuelaController@reporte');
 	Route::get('api/escuela','EscuelaController@data');
 	Route::get('get/escuela','EscuelaController@get');
+	Route::get('grafico/escuela/{id}','EscuelaController@grafico');
 	//autoress
 	Route::resource('autor','AutorController');
 	Route::get('reportes/autor','AutorController@reporte');
@@ -83,6 +85,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('reportes/user/{tipo}','UsuarioController@reporte');
 	Route::get('api/user','UsuarioController@data');
 	Route::get('get/user','UsuarioController@get');
+	Route::get('grafico/user/{tipo}','UsuarioController@grafico');
 	//reporte
 	Route::resource('reporte','ReporteController');
 	//sancion

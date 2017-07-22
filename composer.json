@@ -15,7 +15,7 @@
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*|3.0.*",
         "symfony/dom-crawler": "2.8.*|3.0.*",
-          "maatwebsite/excel": "^2.1"  
+          "maatwebsite/excel": "^2.1"
     },
     "autoload": {
         "classmap": [
@@ -48,10 +48,5 @@
     },
     "config": {
         "preferred-install": "dist"
-    },
-    "require": {
-        "laravelcollective/html":"5.2.*",
-        "yajra/laravel-datatables-oracle": "^6.13"
-
     }
 }

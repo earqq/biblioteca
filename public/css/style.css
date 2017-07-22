@@ -25,7 +25,7 @@
 
 body {
 	background: url(../images/bg.png) repeat;
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-family: 'Cabin', sans-serif !important;
 	font-weight:300;
 	text-align: left;
 	text-decoration: none;
@@ -93,7 +93,7 @@ HEADER
 }
 
 .login-form .header h1 {
-	font-family: 'Bree Serif', serif;
+	font-family: 'Cabin', sans-serif;
 	font-weight: 300;
 	font-size: 28px;
 	line-height:34px;
@@ -122,7 +122,7 @@ CONTENT
 	width: 188px;
 	padding: 15px 25px;
 
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-family: 'Cabin', sans-serif;
 	font-weight: 400;
 	font-size: 14px;
 	color: #9d9e9e;
@@ -211,7 +211,7 @@ FOOTER
 	float:right;
 	padding: 11px 25px;
 
-	font-family: 'Bree Serif', serif;
+font-family: 'Cabin', sans-serif;
 	font-weight: 300;
 	font-size: 18px;
 	color: #fff;
@@ -258,7 +258,7 @@ FOOTER
 	border: none;
 	cursor: pointer;
 
-	font-family: 'Bree Serif', serif;
+	font-family: 'Cabin', sans-serif;
 	font-weight: 300;
 	font-size: 18px;
 	color: #414848;
@@ -318,11 +318,45 @@ FOOTER
 .title-section h3{
 	font-size: 20px;
 	text-transform: uppercase;
-	font-weight: bold;	
+	font-weight: bold;
 }
 
 
 .panel-order{
-	display: flex;
+	display: flex ;
 	width: 100%;
+}
+
+.panel-order a{
+	display: flex ;
+	width: 33.33%;
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+.panel-order.po-2 a{
+	width: 50% !important;
+}
+
+.panel-order a:hover{
+	background-color: white;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
+}
+.panel-order i{
+font-size: 80px;
+}
+
+.panel-order p{
+margin-top: 10px;
+font-size: 18px;
+font-weight: bold;
+text-transform: uppercase;
+}
+
+.side-menu a{
+	font-family: 'Cabin', sans-serif !important;
 }

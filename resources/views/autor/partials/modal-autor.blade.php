@@ -6,34 +6,28 @@
                 <h4 class="modal-title" id="gridModalLabel">Libro</h4>
             </div>
             {!! Form::open(['route'=>'autor.store', 'method'=>'POST','id'=>'form-autor']) !!}
-                <div class="modal-body">          
+                <div class="modal-body">
 
                     <div class="container-fluid bd-example-row">
-                        <div class="row">                   
-                            <div class="form-group col-xs-11 col-margins">
-                                <div class="inner-addon right-addon">                    
+                        <div class="row">
+                                <div class="inner-addon right-addon">
                                     <label for="">Nombre</label>
 
-                                    {!!Form::text('nombre', null,array('class'=>'form-control','id'=>'mnombre', 'placeholder'=>'Nombre(**)'))!!}                                    
+                                    {!!Form::text('nombre', null,array('class'=>'form-control','id'=>'mnombre', 'placeholder'=>'Nombre(**)'))!!}
                                 </div>
-                            </div> 
-                            <div class="form-group col-xs-11 col-margins">
-                                <div class="inner-addon right-addon">                    
+                                <br>
+                                <div class="inner-addon right-addon">
                                     <label for="">Apellidos</label>
 
-                                    {!!Form::text('apellidos', null,array('class'=>'form-control','id'=>'mapellidos', 'placeholder'=>'Apellidos(*)'))!!}                                    
+                                    {!!Form::text('apellidos', null,array('class'=>'form-control','id'=>'mapellidos', 'placeholder'=>'Apellidos(*)'))!!}
                                 </div>
-                            </div>  
-                            <div class="form-group col-xs-11 col-margins">
-                                <div class="inner-addon right-addon">                    
+                                <br>
+                                <div class="inner-addon right-addon">
                                     <label for="">Nacionalidad</label>
 
-                                    {!!Form::text('nacionalidad', null,array('class'=>'form-control','id'=>'mnacionalidad', 'placeholder'=>'Nacionalidad(*)'))!!}                                    
+                                    {!!Form::text('nacionalidad', null,array('class'=>'form-control','id'=>'mnacionalidad', 'placeholder'=>'Nacionalidad(*)'))!!}
                                 </div>
-                            </div>                                          
-                           
-                            
-                         
+
                         </div>
                     </div>
                 </div>
@@ -46,5 +40,4 @@
             {!!Form::close()!!}
         </div>
     </div>
-</div> 
- 
+</div>

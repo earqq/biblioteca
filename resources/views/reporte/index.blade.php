@@ -2,32 +2,20 @@
 	@section('titulo')
 		Reportes
 	@endsection()
+	<link rel="stylesheet" href="{{asset('css/style.css')}}">
+
 	@section('content')
 
 	<div class="panel-order">
-	
-		<div class="panel panel-default">		
-	  		<div class="panel-body">
-	  			<a href="{{url('reportes/libro')}}">Libros</a>
-			</div>
-		</div>
-		<div class="panel panel-default">		
-	  		<div class="panel-body">
-	  			<a href="{{URL::to('reportes/user_index')}}">Usuarios</a>
-			</div>
-		</div>
-		
-		<div class="panel panel-default">		
-	  		<div class="panel-body">
-	  			<a href="{{URL::to('reporte/prestamo')}}">Prestamos</a>
-			</div>
 
-		</div> 
+		<a href="{{url('reportes/libro')}}"><i class="fa fa-book"></i><p>Libros</p></a>
+		<a href="{{URL::to('reportes/user_index')}}"><i class="fa fa-users"></i><p>Usuarios</p></a>
+		<a href="{{URL::to('reporte/prestamo')}}"><i class="fa fa-ticket"></i><p>Prestamos</p></a>
 
 	</div>
-		
-	
+
+
 	@endsection()
-	@section('script')		
-	
+	@section('script')
+
 	@endsection()

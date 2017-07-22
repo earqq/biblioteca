@@ -7,20 +7,21 @@
 
 @section('content')
 
-    <div class="row box-body">
-        <div class="tab-button ">
-          <div class="tab active" id="perfil-button">
-            <i class="fa fa-user"></i>&nbsp;&nbsp;<p>autor</p>
-          </div>
-          <div class="tab" id="asistencia-button">
-            <i class="fa fa-calendar-check-o"></i>&nbsp;&nbsp;<p>areas</p>
-          </div>
-         
-          <div class="tab" id="asistencia-users-button">
-            <i class="fa fa-calendar-check-o"></i>&nbsp;&nbsp;<p>libros</p>
-          </div>
+<div class="tab-button ">
+	<div class="tab active" id="perfil-button">
+		<i class="fa fa-street-view"></i>&nbsp;&nbsp;<p>autor</p>
+	</div>
 
-        </div>
+	<div class="tab" id="asistencia-button">
+		<i class="fa fa-lightbulb-o"></i>&nbsp;&nbsp;<p>areas</p>
+	</div>
+
+	<div class="tab" id="asistencia-users-button">
+		<i class="fa fa-book"></i>&nbsp;&nbsp;<p>libros</p>
+	</div>
+
+</div>
+    <div class="row box-body">
         <div class="profile-empresa-content ">
           <div id='perfil' class="profile-tab active">
            			<div class="panel panel-default padding-box">
@@ -45,23 +46,22 @@
 
 			 <div >
 				 <div >
-					 <div class="bar panel panel-default padding-box">
+					 <div class="bar panel panel-default padding-box title-content">
 						 <div class="title-section">
-
 							 <h3>Autores mas solicitados por mes</h3>
 						 </div>
 						 <canvas id="myChart_autor" class="chart"></canvas>
 					 </div>
-					 
+
 				 </div>
 			 </div>
           </div>
 
           <!--Fin autor-->
           <div id='asistencia' class="profile-tab">
-          		
+
 			  <div class="sanciones_form panel panel-default padding-box ">
-			    <button onclick="abrir_area();" class="btn btn-accent">Nueva Area</button>
+			    <button onclick="abrir_area();" class="btn btn-accent"><i class="fa fa-plus-circle">&nbsp;</i>Nueva Area</button>
 					<div class="container-fluid ">
 							<table   id="example_area" class="table table table-hover table-result  width-all">
 								<thead>
@@ -92,7 +92,7 @@
 				<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 				<!--Fin categoria-->
         </div>
-     
+
         <div id='asistencia-adm' class="profile-tab">
 	          <div class="panel panel-default padding-box">
 					<button onclick="abrir_libro();" class="btn btn-accent"><i class="fa fa-plus-circle">&nbsp;</i>libro nuevo</button>
@@ -135,7 +135,7 @@
 				 </div>
 			 </div>
         </div>
-     
+
         </div>
 
 
@@ -144,7 +144,7 @@
 
 @include('categoria.partials.modal-categoria')
 	 @include('autor.partials.modal-autor')
-	 
+
  @include('libro.partials.modal-libro')
 
 @endsection
@@ -403,9 +403,8 @@ function showPerfil(){
     }
 
 	$(document).ready(function() {
-
+		showPerfil();
 		chart();
-
   	/*Para el registro de nuevo producto o edicion*/
   	$('#example_libro').DataTable( {
 	    "processing": true,
@@ -491,21 +490,21 @@ tableResposive("#example_libro", 980);
             headers:{'X-CSRF-TOKEN':token},
             url:route,
             type:'GET',
-                    success: function(result) 
+                    success: function(result)
                     {
                       	console.log(result.datos);
                         var ctx = document.getElementById("myChart_autor").getContext('2d');
-                        var myChart = new Chart(ctx, 
+                        var myChart = new Chart(ctx,
                         {
 	                        type: 'bar',
-	                        data: 
+	                        data:
 	                        {
 	                            labels: result.datos,
 	                            datasets:
 	                            [{
 	                                label: '# de libros prestados',
 	                                data: result.valor,
-	                                backgroundColor: 
+	                                backgroundColor:
 	                                [
 	                                    'rgba(255, 99, 132, 0.2)',
 	                                    'rgba(54, 162, 235, 0.2)',
@@ -515,7 +514,7 @@ tableResposive("#example_libro", 980);
 	                                    'rgba(255, 159, 64, 0.2)',
 	                                    'rgba(255, 159, 64, 0.2)'
 	                                ],
-	                                borderColor: 
+	                                borderColor:
 	                                [
 	                                    'rgba(255,99,132,1)',
 	                                    'rgba(54, 162, 235, 1)',
@@ -528,11 +527,11 @@ tableResposive("#example_libro", 980);
 	                                borderWidth: 1
 	                            }]
 	                        },
-	                        options: 
+	                        options:
 	                        {
-	                            scales: 
+	                            scales:
 	                            {
-	                                yAxes: 
+	                                yAxes:
 	                                [{
 	                                    ticks:
 	                                     {
@@ -541,13 +540,13 @@ tableResposive("#example_libro", 980);
 	                                }]
 	                            }
 	                        }
-                    	}); 
+                    	});
                 	}
                 });
-                    
-               
 
-		
+
+
+
 	}
 
 
@@ -872,10 +871,10 @@ function chart_area(){
 	        success: function(result) {
 	        $("#cmnombre").val(result.nombre);
 			$("#cmdescripcion").val(result.descripcion);
-		
+
 
 			$("#mid_categoria").val(result.id);
-		
+
 			$('#modal_area').modal('show');
 	        $('#crear_area').val('1');
 	        }
@@ -1003,7 +1002,7 @@ function chart_area(){
 
 	    	{data: 'nombre'},
 	    	{data: 'descripcion'},
-	    
+
 
 
 	    	{data: 'action'},
@@ -1042,7 +1041,7 @@ tableResposive("#example_area", 980);
 
 		 });
 
-
+</script>
 
 //fin cate
 @endsection

@@ -84,7 +84,7 @@
 
 <div class="panel panel-default">
     <div class="panel-heading panel-color">
-        <h3 class="panel-title"> DEVOLUCIONES  </h3>
+        <h3 class="panel-title"> DEVOLUCIONES DISPONIBLES  </h3>
     </div>
     <div class="panel-body table-number">
       <div class="  table-data  table-responsive">

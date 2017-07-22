@@ -47,17 +47,32 @@ class AutorController extends Controller
         $fecha1=$año.'-'.$mes.'-01';
         $fecha2=$año.'-'.$mes2.'-01';
         $prestamos=prestamo::where('fecha_prestamo','>=',$fecha1)->where('fecha_prestamo','<',$fecha2)->get();
+
         $datos=new Arrayobject();
+        $datos1=new Arrayobject();
+        $datos2=new Arrayobject();
+        $datos3=new Arrayobject();
         foreach ($autores as $key => $autor) {
              $datos[$autor->nombre]=0;
             foreach ($prestamos as $key => $prestamo)
-            {
-            
-                    if($prestamo->id_autor=$autor->id)
-                    $datos[$autor->nombre]=$datos[$autor->nombre]+1;
+            {      
+                    $libro=libro::find($prestamo->id_libro);
+                    if($libro->id_autor==$autor->id)
+                    {
+                        $datos[$autor->nombre]=$datos[$autor->nombre]+1;
+                    }
+                    
             }
+        }   
+        $datos1=array();
+        $datos2=array();
+        foreach ($datos as $key => $value) {
+           array_push($datos1,$key);
+           array_push($datos2,$value);
         }
-        return $datos;   
+        $datos3['datos']=$datos1;
+        $datos3['valor']=$datos2;
+        return $datos3;   
     }
     /**
      * Store a newly created resource in storage.

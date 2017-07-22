@@ -5,8 +5,10 @@
 	<link rel="stylesheet" href="{{asset('css/style.css')}}">
 	@section('content')
 
+	<div class="panel panel-default padding-box">
+		<button onclick="abrir();" class="btn btn-accent"><i class="fa fa-plus-circle">&nbsp;</i>libro nuevo</button>
+	</div>
 	<div class="sanciones_form panel panel-default  padding-box ">
-	  <button onclick="abrir();" class="btn btn-accent">libro nuevo</button>
 		<div class="container-fluid table-container ">
 				<table   id="example" class="table table-hover">
 					<thead>
@@ -27,17 +29,17 @@
 	</div>
 	<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 
- <div class="chart-libros">
+ <div class="chart-libros title-content">
 	 <div class="chart-libros-wrapper">
 		 <div class="bar chart-section panel panel-default padding-box">
 			 <div class="title-section">
-				 <h3>Prestamos por mes</h3>
+				 <h3><i class="fa fa-bar-chart"></i>&nbsp;Prestamos por mes</h3>
 			 </div>
 			 <canvas id="myChart" class="chart"></canvas>
 		 </div>
 		 <div class="doughnut chart-section panel panel-default padding-box">
 			 <div class="title-section">
-				 <h3>Prestamos por area</h3>
+				 <h3><i class="fa fa-bar-chart"></i>&nbsp;Prestamos por area</h3>
 			 </div>
 			 <canvas id="myChart2" class="chart"></canvas>
 		 </div>
@@ -45,11 +47,11 @@
  </div>
 
 
-  <div class="sanciones_form panel panel-default padding-box">
-		<div class="title-section <padding-box></padding-box>">
-			<h3>Libros mas prestado</h3>
+  <div class="sanciones_form panel panel-default padding-box title-content">
+		<div class="title-section ">
+			<h3><i class="fa fa-heart-o"></i>&nbsp;Libros mas prestado</h3>
 		</div>
-    <div class="container-fluid  ">
+    <div class="container-fluid tables  ">
         <table   class="table table-hover  ">
           <thead>
             <tr>

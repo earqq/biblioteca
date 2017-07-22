@@ -42,6 +42,9 @@
 
 	<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 	@include('categoria.partials.modal-categoria')
+	 @include('autor.partials.modal-autor')
+	 
+ @include('libro.partials.modal-libro')
  @endsection
  @section('script')
  <script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js" ></script>

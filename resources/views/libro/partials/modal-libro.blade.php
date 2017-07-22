@@ -1,4 +1,4 @@
- <div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+ <div id="modal_libro" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -13,18 +13,18 @@
                                 <div class="inner-addon right-addon">
                                     <label for="">Nombre</label>
 
-                                    {!!Form::text('nombre', null,array('class'=>'form-control','id'=>'mnombre', 'placeholder'=>'Nombre(**)'))!!}
+                                    {!!Form::text('nombre', null,array('class'=>'form-control','id'=>'lmnombre', 'placeholder'=>'Nombre(**)'))!!}
                                 </div>
                                 <br>
                                 <div class="inner-addon right-addon">
                                     <label for="">Descripcion</label>
 
-                                    {!!Form::text('descripcion', null,array('class'=>'form-control','id'=>'mdescripcion', 'placeholder'=>'Descripcion(*)'))!!}
+                                    {!!Form::text('descripcion', null,array('class'=>'form-control','id'=>'lmdescripcion', 'placeholder'=>'Descripcion(*)'))!!}
                                 </div>
                                 <br>
                                 <div class="inner-addon right-addon">
                                     <label for="">Autor</label>
-                                    <select name="autor" id="mautor" class="form-control">
+                                    <select name="autor" id="lmautor" class="form-control">
                                         @foreach($autores as $autor)
                                         <option value="{{$autor->id}}">{{$autor->nombre}}</option>
 
@@ -35,23 +35,23 @@
 
                                 <div class="inner-addon right-addon">
                                     <label for="">Fecha publicacion</label>
-                                    <input type='date' class="form-control" id='mfecha_publicacion' name='fecha_publicacion' ></input>
+                                    <input type='date' class="form-control" id='lmfecha_publicacion' name='fecha_publicacion' ></input>
                                 </div>
                                 <br>
 
                                 <div class="inner-addon right-addon">
                                     <label for="">Fecha adquisicion</label>
-                                    <input type='date' class="form-control" id='mfecha_adquisicion' name='fecha_adquisicion' ></input>
+                                    <input type='date' class="form-control" id='lmfecha_adquisicion' name='fecha_adquisicion' ></input>
                                 </div>
                                 <br>
                                 <div class="inner-addon right-addon">
                                     <label for=""># Ejemplares</label>
-                                    <input type='text' class="form-control" id='mejemplares' name='ejemplares' ></input>
+                                    <input type='text' class="form-control" id='lmejemplares' name='ejemplares' ></input>
                                 </div>
                                 <br>
                                 <div class="inner-addon right-addon">
                                     <label for="">Estado</label>
-                                    <select name="estado_libro" id="mestado_libro" class="form-control">
+                                    <select name="estado_libro" id="lmestado_libro" class="form-control">
 
                                         <option value="1">Nuevo</option>
                                         <option value="2">Usado</option>
@@ -63,7 +63,7 @@
                     </div>
                 </div>
                  <input type="hidden" name="id_libro" id='mid_libro'>
-                <input type="hidden" id='crear' name="crear" value='0'>
+                <input type="hidden" id='crear_libro' name="crear" value='0'>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     <button type="submit" id="btn-addlibro"  class="btn btn-primary" data-dismiss="modal">Guardar</button>

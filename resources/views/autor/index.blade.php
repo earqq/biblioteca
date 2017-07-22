@@ -5,8 +5,10 @@
 	<link rel="stylesheet" href="{{asset('css/style.css')}}">
 	@section('content')
 
-	<div class="sanciones_form panel panel-default  padding-box ">
-	  <button onclick="abrir();" class="btn btn-accent">Autor nuevo</button>
+		<div class="panel panel-default padding-box">
+			<button onclick="abrir();" class="btn btn-accent"><i class="fa fa-plus-circle">&nbsp;</i>Autor nuevo</button>
+		</div>
+		<div class="sanciones_form panel panel-default  padding-box ">
 		<div class="container-fluid table-container ">
 				<table   id="example" class="table table-hover">
 					<thead>
@@ -14,8 +16,6 @@
 							<th>Nombre</th>
 							<th>Apellidos</th>
 							<th>Nacionalidad</th>
-							
-
 							<th>Acciones</th>
 						</tr>
 					</thead>
@@ -29,6 +29,7 @@
 	 <div >
 		 <div class="bar panel panel-default padding-box">
 			 <div class="title-section">
+
 				 <h3>Autores mas solicitados por mes</h3>
 			 </div>
 			 <canvas id="myChart" class="chart"></canvas>
@@ -36,6 +37,7 @@
 		 
 	 </div>
  </div>
+
  @include('autor.partials.modal-autor')
  @endsection
  @section('script')
@@ -152,10 +154,10 @@
 	        $("#mnombre").val(result.nombre);
 			$("#mapellidos").val(result.apellidos);
 			$("#mnacionalidad").val(result.nacionalidad);
-			
+
 
 			$("#mid_autor").val(result.id);
-		
+
 			$('#modal').modal('show');
 	        $('#crear').val('1');
 	        }
@@ -284,7 +286,7 @@
 	    	{data: 'nombre'},
 	    	{data: 'apellidos'},
 	    	{data: 'nacionalidad'},
-	    	
+
 
 
 	    	{data: 'action'},

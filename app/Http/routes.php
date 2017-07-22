@@ -99,9 +99,10 @@ Route::group(['middleware' => ['auth']], function () {
 	{
 		return view('usuario.preindex');
 	});
-	Route::get('recursos',function()
-	{
-		return view('libro.preindex');
+	Route::get('recurso',function()	
+	{			
+		  $autores=App\autor::all();
+		  return view('libro.preindex',compact('autores'));
 	});
 	
 

@@ -32,7 +32,7 @@
 }
 </style>
 
-<a href="#" id={{$id}} class="editar" OnClick="editar(this.id);" style="color: #4d5158;"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<i class="accion">editar</i></a>
+<a href="#" id={{$id}} class="editar" OnClick="editar_libro(this.id);" style="color: #4d5158;"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<i class="accion">editar</i></a>
 
-<a href="#"  id={{$id}} class="eliminar" OnClick="eliminar(this.id);"  style="color:#fb4242;"><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;<i class="accion">borrar</i></a>
+<a href="#"  id={{$id}} class="eliminar" OnClick="eliminar_libro(this.id);"  style="color:#fb4242;"><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;<i class="accion">borrar</i></a>
 

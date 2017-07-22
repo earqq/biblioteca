@@ -15,6 +15,7 @@
 
                                     {!!Form::text('usuario', null,array('class'=>'form-control','id'=>'musuario', 'placeholder'=>'Nombre(**)','readonly'=>'readonly'))!!}
                                 </div>
+                                <br>
                                 <div class="inner-addon right-addon">
                                     <label for="">Libro</label>
                                     {!!Form::text('libro', null,array('class'=>'form-control','id'=>'mlibro', 'readonly'=>'readonly'))!!}

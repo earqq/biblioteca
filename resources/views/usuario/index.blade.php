@@ -6,8 +6,11 @@
 
 	@section('content')
 
+	<div class="panel panel-default padding-box">
+		<button onclick="abrir();" class="btn btn-accent"><i class="fa fa-plus-circle">&nbsp;</i>nuevo usuario</button>
+	</div>
+
   <div class="sanciones_form panel panel-default padding-box ">
-    <button onclick="abrir();" class="btn btn-accent">nuevo usuario</button>
 		<div class="container-fluid ">
 				<table   id="example" class="table table table-hover table-result  width-all">
 					<thead>
@@ -31,13 +34,13 @@
  	 <div class="chart-libros-wrapper">
  		 <div class="bar chart-section panel panel-default padding-box">
 			 <div class="title-section">
-				 <h3>Usuarios Nuevos</h3>
+				 <h3><i class="fa fa-bar-chart">&nbsp;</i>Usuarios Nuevos</h3>
 			 </div>
  			 <canvas id="myChart" class="chart"></canvas>
  		 </div>
  		 <div class="doughnut chart-section panel panel-default padding-box">
 			 <div class="title-section">
-				 <h3>Estado de usuarios</h3>
+				 <h3><i class="fa fa-bar-chart">&nbsp;</i>Estado de usuarios</h3>
 			 </div>
  			 <canvas id="myChart2" class="chart"></canvas>
  		 </div>

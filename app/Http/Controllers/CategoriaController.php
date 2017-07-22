@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use  App\libro;
+use  App\categoria;
 
 class CategoriaController extends Controller
 {
@@ -30,6 +31,12 @@ class CategoriaController extends Controller
         // return View::make('producto.partial.modal-producto');
 
     }
+     public function data()
+    {
+        $orders=categoria::all();
+        
+        return \Datatables::of($orders)->addColumn('action', 'categoria.partials.vista')->make(true) ; 
+    }
      public function reporte()
     {
         return view('reporte.categoria');
@@ -43,7 +50,14 @@ class CategoriaController extends Controller
    public function store(Request $request)
     {   
 
-      
+       if($request->crear==0)
+           $libro=new categoria;
+       else $libro=categoria::find($request->get('id_categoria'));
+            $libro->nombre=$request->nombre;
+            $libro->descripcion=$request->descripcion;
+          
+            $libro->save();
+           return 'Categoria guardada';
         
     }
 
@@ -51,7 +65,9 @@ class CategoriaController extends Controller
     //@Param $request -> viene el id de la habitacion
     public function get(Request $request)
     {
-        
+        $categoria= categoria::find($request->id);
+
+        return $categoria;
     }
     /**
      * Display the specified resource.
@@ -96,9 +112,9 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-      
+       $categoria=categoria::find($id);
+        $categoria->delete();
+        return 'Categoria borrado';
     }
-    public function data(){
-     
-    }   
+
 }

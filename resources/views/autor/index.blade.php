@@ -25,69 +25,17 @@
 	</div>
 	<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 
- <div class="chart-libros">
-	 <div class="chart-libros-wrapper">
-		 <div class="bar chart-section panel panel-default padding-box">
+ <div >
+	 <div >
+		 <div class="bar panel panel-default padding-box">
 			 <div class="title-section">
-				 <h3>Prestamos por mes</h3>
+				 <h3>Autores mas solicitados por mes</h3>
 			 </div>
 			 <canvas id="myChart" class="chart"></canvas>
 		 </div>
-		 <div class="doughnut chart-section panel panel-default padding-box">
-			 <div class="title-section">
-				 <h3>Prestamos por area</h3>
-			 </div>
-			 <canvas id="myChart2" class="chart"></canvas>
-		 </div>
+		 
 	 </div>
  </div>
-
-
-  <div class="sanciones_form panel panel-default padding-box">
-		<div class="title-section <padding-box></padding-box>">
-			<h3>Libros mas prestado</h3>
-		</div>
-    <div class="container-fluid  ">
-        <table   class="table table-hover  ">
-          <thead>
-            <tr>
-							<th>Nombre</th>
-							<th>Descripcion</th>
-							<th>Autor</th>
-							<th>Estado libros</th>
-            </tr>
-          </thead>
-					<tbody>
-						<tr>
-							<td>nombre #1</td>
-							<td>Descripcion #1</td>
-							<td>Autor #1</td>
-							<td>Estado libros #1</td>
-						</tr>
-						<tr>
-							<td>nombre #1</td>
-							<td>Descripcion #1</td>
-							<td>Autor #1</td>
-							<td>Estado libros #1</td>
-						</tr>
-						<tr>
-							<td>nombre #1</td>
-							<td>Descripcion #1</td>
-							<td>Autor #1</td>
-							<td>Estado libros #1</td>
-						</tr>
-						<tr>
-							<td>nombre #1</td>
-							<td>Descripcion #1</td>
-							<td>Autor #1</td>
-							<td>Estado libros #1</td>
-						</tr>
-					</tbody>
-        </table>
-      <br/>
-    </div>
-  </div>
-
  @include('autor.partials.modal-autor')
  @endsection
  @section('script')
@@ -98,16 +46,71 @@
 	// graficos
 
 	function chart(){
+		   var route="./grafico/autor/"o;
+            var token=$("#token").val();
+             $.ajax({
+            headers:{'X-CSRF-TOKEN':token},
+            url:route,
+
+            type:'GET',
+                    success: function(result) {
+                      
+                        var ctx = document.getElementById("myChart").getContext('2d');
+                        var myChart = new Chart(ctx, 
+                        {
+                        type: 'bar',
+                        data: {
+                            labels: ["Lunes", "Martes", "Miercoles", "Jueves","Viernes", "Sabado", "Domingo"],
+                            datasets: [{
+                                label: '# de devoluciones',
+                                data: [result.Lunes, result.Martes, result.Miercoles, result.Jueves, result.Viernes, result.Sabado,result.Domingo],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255,99,132,1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero:true
+                                    }
+                                }]
+                            }
+                        }
+                    }
+                      });
+                    
+                    }
+
+                });
+
 
 		var ctx = document.getElementById("myChart").getContext('2d');
-		var ctx2 = document.getElementById("myChart2").getContext('2d');
+
 		var myChart = new Chart(ctx, {
 				type: 'bar',
 				data: {
-						labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+						labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange","Orange","Orange","Orange","Orange"],
 						datasets: [{
 								label: '# of Votes',
-								data: [12, 19, 3, 5, 2, 3],
+								data: [12, 19, 3, 5, 2, 3,3,3,3,3,],
 								backgroundColor: [
 										'rgba(255, 99, 132, 0.2)',
 										'rgba(54, 162, 235, 0.2)',
@@ -139,36 +142,7 @@
 		});
 
 
-		var myChart2 = new Chart(ctx2, {
-				type: 'doughnut',
-				data: {
-						labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-						datasets: [{
-								label: '# of Votes',
-								data: [12, 19, 3, 5, 2, 3],
-								backgroundColor: [
-										'rgba(255, 99, 132, 0.2)',
-										'rgba(54, 162, 235, 0.2)',
-										'rgba(255, 206, 86, 0.2)',
-										'rgba(75, 192, 192, 0.2)',
-										'rgba(153, 102, 255, 0.2)',
-										'rgba(255, 159, 64, 0.2)'
-								],
-								borderColor: [
-										'rgba(255,99,132,1)',
-										'rgba(54, 162, 235, 1)',
-										'rgba(255, 206, 86, 1)',
-										'rgba(75, 192, 192, 1)',
-										'rgba(153, 102, 255, 1)',
-										'rgba(255, 159, 64, 1)'
-								],
-								borderWidth: 1
-						}]
-				},
-				options: {
-						rotate: -0.5 * Math.PI
-				}
-		});
+		
 	}
 
 

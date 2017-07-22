@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="gridModalLabel">Libro</h4>
+                <h4 class="modal-title" id="gridModalLabel">Usuario</h4>
             </div>
             {!! Form::open(['route'=>'user.store', 'method'=>'POST','id'=>'form-user']) !!}
                 <div class="modal-body">          

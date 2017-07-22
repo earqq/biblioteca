@@ -10,6 +10,8 @@ use Datetime;
 use DB;
 use App\libro;
 use App\autor;
+use App\prestamo;
+use Arrayobject;
 class AutorController extends Controller
 {
     /**
@@ -33,7 +35,30 @@ class AutorController extends Controller
                
 
     }
+    public function grafico()
+    {
+        //barras
 
+        $autores=autor::all();
+        $fecha= new Datetime;
+        $mes=$fecha->format('m');
+        $mes2=intval($mes)+1;
+        $año=$fecha->format('Y');
+        $fecha1=$año.'-'.$mes.'-01';
+        $fecha2=$año.'-'.$mes2.'-01';
+        $prestamos=prestamo::where('fecha_prestamo','>=',$fecha1)->where('fecha_prestamo','<',$fecha2)->get();
+        $datos=new Arrayobject();
+        foreach ($autores as $key => $autor) {
+             $datos[$autor->nombre]=0;
+            foreach ($prestamos as $key => $prestamo)
+            {
+            
+                    if($prestamo->id_autor=$autor->id)
+                    $datos[$autor->nombre]=$datos[$autor->nombre]+1;
+            }
+        }
+        return $datos;   
+    }
     /**
      * Store a newly created resource in storage.
      *

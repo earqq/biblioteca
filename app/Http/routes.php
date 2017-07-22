@@ -31,6 +31,15 @@ Route::group(['middleware' => ['auth']], function () {
 	{
 		return view('libro.gestionar');
 	});
+	//Sanciones
+	Route::resource('sancion','SancionController');
+	Route::get('sancion_aplicar',['as'=>'sancion.aplicar','uses'=>'SancionController@devolver']);
+	Route::get('api/sancion','SancionController@data');
+	Route::get('get/sancion','SancionController@get');
+	Route::get('reporte/sancion/{id}','SancionController@reporte');
+	Route::get('reporte/sancion','SancionController@reporte_index');
+	Route::get('prestamo_busqueda','SancionController@indexbusqueda');
+	Route::get('prestamo_usuario','SancionController@indexusuario');
 	//Dashboard
 	Route::get('dashboard/{tipo_dia}','PrestamoController@dashboard');
 	Route::get('prestamo/grafico/{tipo_grafico}','PrestamoController@grafico');
@@ -53,10 +62,18 @@ Route::group(['middleware' => ['auth']], function () {
 	//categoria
 	Route::resource('categoria','CategoriaController');
 	Route::get('reportes/categoria','CategoriaController@reporte');
+	Route::get('api/categoria','CategoriaController@data');
+	Route::get('get/categoria','CategoriaController@get');
+	//Escuela
+	Route::resource('escuela','EscuelaController');
+	Route::get('reportes/escuela','EscuelaController@reporte');
+	Route::get('api/escuela','EscuelaController@data');
+	Route::get('get/escuela','EscuelaController@get');
 	//autoress
 	Route::resource('autor','AutorController');
 	Route::get('reportes/autor','AutorController@reporte');
 	Route::get('api/autor','AutorController@data');
+	Route::get('grafico/autor','AutorController@grafico');
 
 	Route::get('get/autor','AutorController@get');
 	//usuarios
@@ -71,8 +88,20 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::resource('sancion','SancionController');
 	//escuela
 	Route::get('escuela',function()
-	{
+	{	
 		return view('escuela.index');
+	});
+	Route::get('servicios',function()
+	{
+		return view('prestamo.preindex');
+	});
+	Route::get('user_preindex',function()
+	{
+		return view('usuario.preindex');
+	});
+	Route::get('recursos',function()
+	{
+		return view('libro.preindex');
 	});
 	
 

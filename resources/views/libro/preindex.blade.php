@@ -4,6 +4,7 @@
 	@endsection()
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="{{asset('css/style.css')}}">
 
 
 @section('content')
@@ -61,7 +62,7 @@
           <!--Fin autor-->
           <div id='asistencia' class="profile-tab">
 
-			
+
 				<div class="panel panel-default padding-box">
 			<button onclick="abrir_area();" class="btn btn-accent"><i class="fa fa-plus-circle">&nbsp;</i>Categoria nuevo</button>
 					</div>
@@ -72,7 +73,7 @@
 									<tr>
 										<th>Nombre</th>
 										<th>Descripcion</th>
-										
+
 										<th>Acciones</th>
 									</tr>
 								</thead>
@@ -88,7 +89,7 @@
 						 </div>
 			 			 <canvas id="myChart_area" class="chart"></canvas>
 			 		 </div>
-			 		
+
 			 	 </div>
 			  </div>
 
@@ -130,7 +131,7 @@
 						 </div>
 						 <canvas id="myChart_libro" class="chart"></canvas>
 					 </div>
-					
+
 				 </div>
 			 </div>
         </div>
@@ -187,8 +188,8 @@ function showPerfil(){
 
 	function chart_libro(){
 
-		
-		
+
+
 		 var route="./grafico/libro/1";
             var token=$("#token").val();
              $.ajax({
@@ -399,7 +400,7 @@ function showPerfil(){
 
 	$(document).ready(function() {
 		showPerfil();
-		
+
   	/*Para el registro de nuevo producto o edicion*/
   	$('#example_libro').DataTable( {
 	    "processing": true,
@@ -685,7 +686,7 @@ tableResposive("#example_libro", 980);
 
 	$(document).ready(function() {
 
-		
+
 
   	/*Para el registro de nuevo producto o edicion*/
   	$('#example_autor').DataTable( {
@@ -768,21 +769,21 @@ function chart_area(){
             headers:{'X-CSRF-TOKEN':token},
             url:route,
             type:'GET',
-                    success: function(result) 
+                    success: function(result)
                     {
-                
+
                         var ctx = document.getElementById("myChart_area").getContext('2d');
-                        var myChart = new Chart(ctx, 
+                        var myChart = new Chart(ctx,
                         {
 	                        type: 'bar',
-	                        data: 
+	                        data:
 	                        {
 	                            labels: result.datos,
 	                            datasets:
 	                            [{
 	                                label: '# de libros prestados',
 	                                data: result.valor,
-	                                backgroundColor: 
+	                                backgroundColor:
 	                                [
 	                                    'rgba(255, 99, 132, 0.2)',
 	                                    'rgba(54, 162, 235, 0.2)',
@@ -792,7 +793,7 @@ function chart_area(){
 	                                    'rgba(255, 159, 64, 0.2)',
 	                                    'rgba(255, 159, 64, 0.2)'
 	                                ],
-	                                borderColor: 
+	                                borderColor:
 	                                [
 	                                    'rgba(255,99,132,1)',
 	                                    'rgba(54, 162, 235, 1)',
@@ -805,11 +806,11 @@ function chart_area(){
 	                                borderWidth: 1
 	                            }]
 	                        },
-	                        options: 
+	                        options:
 	                        {
-	                            scales: 
+	                            scales:
 	                            {
-	                                yAxes: 
+	                                yAxes:
 	                                [{
 	                                    ticks:
 	                                     {
@@ -818,11 +819,11 @@ function chart_area(){
 	                                }]
 	                            }
 	                        }
-                    	}); 
+                    	});
                 	}
                 });
-                    
-               
+
+
 
 }
 

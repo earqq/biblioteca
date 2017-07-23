@@ -12,17 +12,17 @@
 */
 
 // Route::get('/', function () {
-//     return view('home');    
+//     return view('home');
 // });
 Route::auth();
 
 Route::group(['middleware' => ['auth']], function () {
 	Route::get('/', ['as'=>'inicio','uses'=>function () {
 		if(Auth::user()->tipo<2)
-		{	
+		{
 			return view('libro.buscar');
 		}
-		else 
+		else
 	   return view('dashboard');
 
 	}]);
@@ -80,7 +80,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 	Route::get('get/autor','AutorController@get');
 	//usuarios
-	Route::resource('user','UsuarioController');	
+	Route::resource('user','UsuarioController');
 	Route::get('reportes/user_index','UsuarioController@reporte_index');
 	Route::get('reportes/user/{tipo}','UsuarioController@reporte');
 	Route::get('api/user','UsuarioController@data');
@@ -92,22 +92,26 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::resource('sancion','SancionController');
 	//escuela
 	Route::get('escuela',function()
-	{	
+	{
 		return view('escuela.index');
 	});
 	Route::get('servicios',function()
 	{
-		return view('prestamo.preindex');
+		$dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado");
+		 $dia=$dias[date("w")];
+		 $autores=App\autor::all();
+
+		return view('prestamo.preindex',compact('dia','autores'));
 	});
 	Route::get('user_preindex',function()
 	{
 		return view('usuario.preindex');
 	});
-	Route::get('recurso',function()	
-	{			
+	Route::get('recurso',function()
+	{
 		  $autores=App\autor::all();
 		  return view('libro.preindex',compact('autores'));
 	});
-	
+
 
 });

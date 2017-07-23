@@ -40,13 +40,15 @@
                         <br>
                         <ul class="nav side-menu">
                             @if(Auth::user()->tipo>1)
-                             <li><a href="{{URL::to('prestamo')}}"><i class="fa fa-home"></i> PRESTAMOS <span class="fa fa-chevron-right"></span></a>
+                             <li><a href="{{URL::to('prestamo')}}"><i class="fa fa-ticket"></i> PRESTAMOS <span class="fa fa-chevron-right"></span></a>
 
                             </li>
+                            <li><a href="{{URL::to('sancion')}}"><i class="fa  fa-exclamation-circle"></i> SANCIONES <span class="fa fa-chevron-right"></span></a>
                              <li><a href="{{URL::to('gestionar')}}"><i class="fa fa-archive"></i> GESTIONAR <span class="fa fa-chevron-right"></span></a>
                              <li><a href="{{URL::to('reporte')}}"><i class="fa fa-file-text"></i> REPORTES <span class="fa fa-chevron-right"></span></a>
-                            <li><a href="{{URL::to('sancion')}}"><i class="fa  fa-exclamation-circle"></i> SANCIONES <span class="fa fa-chevron-right"></span></a>
                             </li>
+                            <li><a href="{{URL::to('reportebi')}}"><i class="fa fa-cube"></i> REPORTES BI<span class="fa fa-chevron-right"></span></a>
+
 
                             @elseif(Auth::user()->tipo==1)
                              <li><a href="{{URL::to('/')}}"><i class="fa fa-home"></i> LIBROS<span class="fa fa-chevron-right"></span></a>
@@ -146,7 +148,7 @@
                         </ul> --}}
                     </nav>
                 </div>
-                 
+
             </div>
             <!-- /top navigation -->
 
@@ -154,7 +156,7 @@
 
             <div class="align_col">
 
-          
+
 @yield('content')
             </div>
             <!-- <footer>

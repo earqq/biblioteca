@@ -48,18 +48,18 @@
   </div>
 
 
-	<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 	@include('usuario.partials.modal-user')
+	<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
  @endsection
  @section('script')
  <script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js" ></script>
  <script src="{{asset('js/Chart.js/dist/chart.js')}}"></script>
+
+
 <script>
-
-
 // graficos
 
-function chart(){
+function chart2(){
 
 	  var route="./grafico/user/1";
             var token=$("#token").val();
@@ -69,7 +69,7 @@ function chart(){
 
             type:'GET',
                     success: function(result) {
-                      
+
                         var ctx = document.getElementById("myChart").getContext('2d');
                         var myChart = new Chart(ctx,
                         {
@@ -110,13 +110,13 @@ function chart(){
                             }
                         }
                       });
-                    
 
-                    
+
+
 
                     }
 
-                    
+
 
                 });
 
@@ -129,7 +129,7 @@ function chart(){
 
             type:'GET',
                     success: function(result) {
-                      
+
                          var ctx2 = document.getElementById("myChart2").getContext('2d');
                       var myChart2 = new Chart(ctx2, {
                             type: 'pie',
@@ -154,14 +154,14 @@ function chart(){
                             }
                         });
 
-                    
+
 
                     }
 
-                    
+
 
                 });
-              
+
 
 }
 
@@ -223,90 +223,6 @@ function chart(){
 	/*Carga todos los productos y los agrega a la tabla*/
 
 
-    function tableResposive(id, size){
-      if($(window).width() < size ){
-
-          var hijos = $(id + " > thead > tr").children();
-          var hijos_responsive = $(id + " > tbody > tr").children();
-          var numeroFilas = $(id + " > tbody > tr").length;
-          var i=0,j=0, flag = 0;
-
-          console.log($(id).children()[1])
-
-          while(i < hijos.length) {
-
-            console.log(hijos_responsive.eq(j).text());
-
-            hijos_responsive.eq(j).html("<b>"+hijos.eq(i).text()+": </b>"+hijos_responsive.eq(j).text())
-            i++;
-            j++;
-            if(i===(hijos_responsive.length/numeroFilas) && flag <= (hijos_responsive.length/numeroFilas)-1){
-              i=0;
-              flag++;
-            }
-
-          }
-        $(id + "> thead").css({
-          "display" : "none"
-        });
-        $(id + "> tbody tr").css({
-          "display" : "flex",
-          "flex-direction" : "column",
-          "position": "relative"
-        });
-
-        $(id + "> tbody tr td ").css({
-          "font-size" : "12px",
-          "display": "flex",
-          "justify-content": "space-between",
-          "align-items": "center",
-          "position": "absolute",
-          "opacity": "0",
-          "z-index": "-1"
-        });
-
-        $(id + "> tbody tr td:first-child ").css({
-          "position": "relative",
-          "z-index": "1",
-          "background-color": "whitesmoke",
-          "opacity": "1"
-        });
-
-        var active = true;
-
-            // $(id).css({
-            //  "width": "100%"
-            // })
-
-          $(id + "> tbody tr td:first-child ").click(function(){
-            if(active==true){
-            $(this).parent().css({
-              "border" : "1px solid #cecece"
-            });
-            $(this).siblings().css({
-              "position": "relative",
-              "opacity": "1",
-              "z-index": "1"
-
-            })
-            active = false;
-          }else{
-            $(this).parent().css({
-              "border" : "none"
-            });
-            $(this).siblings().css({
-              "position": "absolute",
-              "opacity": "0"
-
-            })
-            active = true;
-          }
-          });
-
-
-      }
-
-    }
 
 	$(document).ready(function() {
 
@@ -353,7 +269,7 @@ function chart(){
 	    ]
 	});
 
-tableResposive("#example", 980);
+
 
   	$('#btn-adduser').click(function(){
 
